@@ -24,7 +24,26 @@ public class MappingApplication {
 			//deleInstructor(appDao);
 			//updateInstructor(appDao);
 
+			//OnwToOneBiDirectional Mapping
+			//findInstructorDetails(appDao);
+			deleteInstructroDetails(appDao);
+
+
 		};
+	}
+
+	private void deleteInstructroDetails(AppDao appDao) {
+		int theId=6;
+		appDao.deleteInstDetBi(theId);
+	}
+
+	private void findInstructorDetails(AppDao appDao) {
+		int theId=5;
+	InstructorDetails tempInstructorDetail=	appDao.findInsDetBi(theId);
+		System.out.println("InstructorDrtails is:"+tempInstructorDetail);
+		System.out.println("Instructor is :"+tempInstructorDetail.getInstructor());
+		System.out.println("Done!!!!!!!!");
+
 	}
 
 	private void updateInstructor(AppDao appDao) {
