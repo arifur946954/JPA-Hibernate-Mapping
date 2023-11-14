@@ -4,4 +4,6 @@ import com.maping.Mapping.entity.Instructor;
 
 public interface AppDao {
     void CreateInstructor(Instructor theInstructor);
+    Instructor findInstructorById(int theId);
+    void deleteInstructroById(int theID);
 }
