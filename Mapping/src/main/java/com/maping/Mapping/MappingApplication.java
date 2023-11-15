@@ -28,11 +28,23 @@ public class MappingApplication {
 			//createInstructorDetails(appDao);
 
 			//One to Many  uni directional
-			createInstructorByCourse(appDao);
+			//createInstructorByCourse(appDao);
+			findCourseByInstructor(appDao);
 
 
 
 		};
+	}
+
+	private void findCourseByInstructor(AppDao appDao) {
+		int theId=18;
+	Course theCourse=	appDao.findCourseByInstructor(theId);
+		System.out.println("Course is:"+theCourse);
+		System.out.println("Instructor is:"+theCourse.getInstructor());
+		System.out.println("Instructor Details is :"+theCourse.getInstructor().getInstructorDetails());
+		System.out.println("Done!!!!!");
+
+
 	}
 
 	private void createInstructorByCourse(AppDao appDao) {

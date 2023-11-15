@@ -14,4 +14,5 @@ public interface AppDao {
 
     //oneToMany Unidirectional
   void  instructorByCourse(Instructor instructor);
+  Course findCourseByInstructor(int theId);
 }
