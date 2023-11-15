@@ -1,5 +1,6 @@
 package com.maping.Mapping.dao;
 
+import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
 
@@ -10,4 +11,7 @@ public interface AppDao {
     //One to one bidirectional
     InstructorDetails findInstructorDetailsById(int theId);
     void CreateInstructorDetails(InstructorDetails tempInsDetails);
+
+    //oneToMany Unidirectional
+  void  instructorByCourse(Instructor instructor);
 }

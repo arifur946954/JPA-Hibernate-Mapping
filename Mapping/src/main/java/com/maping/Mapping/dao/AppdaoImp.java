@@ -52,4 +52,12 @@ public class AppdaoImp implements AppDao{
 
 
     }
+
+    @Override
+    @Transactional
+    public void instructorByCourse(Instructor instructor) {
+        entityManager.persist(instructor);
+
+
+    }
 }

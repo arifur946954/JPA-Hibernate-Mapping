@@ -1,6 +1,7 @@
 package com.maping.Mapping;
 
 import com.maping.Mapping.dao.AppDao;
+import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
 import org.springframework.boot.CommandLineRunner;
@@ -24,10 +25,32 @@ public class MappingApplication {
 			//deletenstructor(appDao);
 			//biDirectional mapping
 			//findInstrctorDetails(appDao);
-			createInstructorDetails(appDao);
+			//createInstructorDetails(appDao);
+
+			//One to Many  uni directional
+			createInstructorByCourse(appDao);
+
 
 
 		};
+	}
+
+	private void createInstructorByCourse(AppDao appDao) {
+		Instructor tempInstructor=new Instructor("Test2","Tester2","test2@gmail.com");
+		InstructorDetails instructorDetails=new InstructorDetails("test2@youtube.com","cricketing");
+		Course tempCourse=new Course("CSE-103");
+		Course tempCourse1=new Course("EEE-103");
+		Course tempCourse2=new Course("IPE-103");
+		tempInstructor.add(tempCourse);
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(tempCourse2);
+		tempInstructor.setInstructorDetails(instructorDetails);
+		appDao.instructorByCourse(tempInstructor);
+		System.out.println("Instructor is :"+tempInstructor);
+		System.out.println("Course is"+tempInstructor.getCourses());
+		System.out.println("instructor Detials is:"+tempInstructor.getInstructorDetails());
+		System.out.println("Done!!!!!!!");
+
 	}
 
 	private void createInstructorDetails(AppDao appDao) {
