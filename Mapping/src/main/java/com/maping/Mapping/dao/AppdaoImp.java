@@ -1,6 +1,7 @@
 package com.maping.Mapping.dao;
 
 import com.maping.Mapping.entity.Instructor;
+import com.maping.Mapping.entity.InstructorDetails;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +35,20 @@ public class AppdaoImp implements AppDao{
     public void deleteInstructroById(int theID) {
       Instructor tempInstructor=  entityManager.find(Instructor.class,theID);
       entityManager.remove(tempInstructor);
+
+
+    }
+
+    @Override
+    public InstructorDetails findInstructorDetailsById(int theId) {
+     InstructorDetails tempInstructorDetails=   entityManager.find(InstructorDetails.class,theId);
+        return tempInstructorDetails;
+    }
+
+    @Override
+    @Transactional
+    public void CreateInstructorDetails(InstructorDetails tempInsDetails) {
+        entityManager.persist(tempInsDetails);
 
 
     }

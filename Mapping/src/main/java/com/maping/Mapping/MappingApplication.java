@@ -21,9 +21,32 @@ public class MappingApplication {
 			//one to one uniDirectional
 			//saveInstructor(appDao);
 			//findInstructorbyId(appDao);
-			deletenstructor(appDao);
+			//deletenstructor(appDao);
+			//biDirectional mapping
+			//findInstrctorDetails(appDao);
+			createInstructorDetails(appDao);
+
 
 		};
+	}
+
+	private void createInstructorDetails(AppDao appDao) {
+		InstructorDetails tempInsDetails=new InstructorDetails("shahin@youtube.com","singing");
+		Instructor tempInstructor=new Instructor("shahin","Afridi","shahin@gmail.com");
+		tempInsDetails.setInstructor(tempInstructor);
+		appDao.CreateInstructorDetails(tempInsDetails);
+		System.out.println("Instructor Details is: "+tempInsDetails);
+		System.out.println("Instructor Detail is: "+tempInsDetails.getInstructor());
+		System.out.println("Done!!!!!!");
+
+	}
+
+	private void findInstrctorDetails(AppDao appDao) {
+		int theId=2;
+	InstructorDetails tempInsDetails=	appDao.findInstructorDetailsById(theId);
+		System.out.println("Instructor Details is "+tempInsDetails);
+		System.out.println("instructor is: "+tempInsDetails.getInstructor());
+		System.out.println("Done");
 	}
 
 	private void deletenstructor(AppDao appDao) {
