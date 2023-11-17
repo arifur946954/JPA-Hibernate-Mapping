@@ -79,6 +79,7 @@ public class Instructor {
 
 
 
+
     @Override
     public String toString() {
         return "Instructor{" +
@@ -88,7 +89,7 @@ public class Instructor {
                 ", email='" + email + '\'' +
                 ", instructorDetails=" + instructorDetails +
                 '}';
-    }
+    } 
 
     public List<Course> getCourses() {
         return courses;

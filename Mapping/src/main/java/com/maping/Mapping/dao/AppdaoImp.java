@@ -3,6 +3,7 @@ package com.maping.Mapping.dao;
 import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
+import com.maping.Mapping.entity.Review;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -67,4 +68,20 @@ public class AppdaoImp implements AppDao{
      Course theCourse=   entityManager.find(Course.class,theId);
         return theCourse;
     }
+
+    @Override
+    @Transactional
+    public void deleteCourseByIns(int theID) {
+      Course theCourse=  entityManager.find(Course.class,theID);
+     entityManager.remove(theCourse);
+
+
+    }
+
+    @Override
+    public void reviewByCourse(Review review) {
+        entityManager.persist(review);
+    }
+
+
 }

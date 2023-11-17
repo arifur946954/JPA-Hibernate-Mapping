@@ -4,6 +4,7 @@ import com.maping.Mapping.dao.AppDao;
 import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
+import com.maping.Mapping.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,11 +30,29 @@ public class MappingApplication {
 
 			//One to Many  uni directional
 			//createInstructorByCourse(appDao);
-			findCourseByInstructor(appDao);
+			//findCourseByInstructor(appDao);
+			//deeleteCourseByIns(appDao);
+			addReview(appDao);
 
 
 
 		};
+	}
+
+	private void addReview(AppDao appDao) {
+		Course tempCourse=new Course("CSE-103");
+		Review review1=new Review("thats awesome");
+		Review review2=new Review("thats awesome");
+		tempCourse.setReviews(review1);
+		appDao.reviewByCourse();
+	}
+
+	private void deeleteCourseByIns(AppDao appDao) {
+		int theId=18;
+		appDao.deleteCourseByIns(theId);
+
+
+
 	}
 
 	private void findCourseByInstructor(AppDao appDao) {
