@@ -4,25 +4,22 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "instructor_detail")
+
 public class InstructorDetails {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     @Column(name = "youtube_channel")
-    private String youtubeChannal;
+    private String youtubeChannel;
     @Column(name = "hobby")
     private String hobby;
-    @OneToOne(mappedBy = "instructorDetails"
-            ,cascade = {CascadeType.DETACH,CascadeType.MERGE,
-            CascadeType.PERSIST,CascadeType.REFRESH})
-    private  Instructor instructor;
 
     public InstructorDetails() {
     }
 
-    public InstructorDetails(String youtubeChannal, String hobby) {
-        this.youtubeChannal = youtubeChannal;
+    public InstructorDetails(String youtubeChannel, String hobby) {
+        this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
     }
 
@@ -34,12 +31,12 @@ public class InstructorDetails {
         this.id = id;
     }
 
-    public String getYoutubeChannal() {
-        return youtubeChannal;
+    public String getYoutubeChannel() {
+        return youtubeChannel;
     }
 
-    public void setYoutubeChannal(String youtubeChannal) {
-        this.youtubeChannal = youtubeChannal;
+    public void setYoutubeChannel(String youtubeChannel) {
+        this.youtubeChannel = youtubeChannel;
     }
 
     public String getHobby() {
@@ -50,19 +47,11 @@ public class InstructorDetails {
         this.hobby = hobby;
     }
 
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-    }
-
     @Override
     public String toString() {
         return "InstructorDetails{" +
                 "id=" + id +
-                ", youtubeChannal='" + youtubeChannal + '\'' +
+                ", youtubeChannel='" + youtubeChannel + '\'' +
                 ", hobby='" + hobby + '\'' +
                 '}';
     }
