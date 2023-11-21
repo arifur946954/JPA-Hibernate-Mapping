@@ -20,7 +20,10 @@ public class MappingApplication {
 		return runner -> {
 
 			//createInstructor(appDao);
-			findInstructor(appDao);
+			//findInstructor(appDao);
+			//deleteInstructor(appDao);
+			//ONE TO ONE BYDIRECTIONAL
+			createInstructorDetails(appDao);
 
 
 
@@ -28,6 +31,25 @@ public class MappingApplication {
 
 
 		};
+	}
+
+	private void createInstructorDetails(AppDao appDao) {
+		Instructor tempInstructor=new Instructor("Test03","Tester","test03@gmail.com");
+		InstructorDetails tempInstructorDetails=new InstructorDetails("test03@youtube.com","Plaaying");
+		   tempInstructorDetails.setInstructor(tempInstructor);
+		   appDao.saveInstructorDetailsByInstructor(tempInstructorDetails);
+		System.out.println("Instructor Details is: "+tempInstructorDetails);
+		System.out.println("Instructor is: "+tempInstructorDetails.getInstructor());
+		System.out.println("Done!!!!!!!!");
+
+
+	}
+
+	private void deleteInstructor(AppDao appDao) {
+		int theId=6;
+		appDao.deleteInstructor(theId);
+		System.out.println("Done!!!!!!!!!");
+
 	}
 
 	private void findInstructor(AppDao appDao) {
