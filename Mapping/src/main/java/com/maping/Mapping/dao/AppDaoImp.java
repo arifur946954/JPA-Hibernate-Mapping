@@ -1,5 +1,6 @@
 package com.maping.Mapping.dao;
 
+import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
 import jakarta.persistence.EntityManager;
@@ -44,4 +45,8 @@ public class AppDaoImp implements AppDao{
         entityManager.persist(instructorDetails);
 
     }
+
+
+
+
 }
