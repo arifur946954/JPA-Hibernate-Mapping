@@ -4,6 +4,7 @@ import com.maping.Mapping.dao.AppDao;
 import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
+import com.maping.Mapping.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,7 @@ public class MappingApplication {
 		return runner -> {
 
 			//createInstructor(appDao);
-			findInstructor(appDao);
+			//findInstructor(appDao);
 			//deleteInstructor(appDao);
 			//ONE TO ONE BYDIRECTIONAL
 			//createInstructorDetails(appDao);
@@ -32,11 +33,31 @@ public class MappingApplication {
 			//createCourseByIns(appDao);
 			//finCourseById(appDao);
 			//findCourseIns(appDao);
+			//one to many unidirecironal
+			createReviewWithCrs(appDao);
+
+
 
 
 
 
 		};
+	}
+
+	private void createReviewWithCrs(AppDao appDao) {
+		Course tempCourse=new Course("CSE-101");
+		Review tempReview1=new Review("Course is Awesome");
+		Review tempReview2=new Review("Course is so bad");
+		Review tempReview3=new Review("Course is Average");
+		  tempCourse.add(tempReview1);
+		tempCourse.add(tempReview2);
+		tempCourse.add(tempReview3);
+		appDao.saveReviewWithCourse(tempCourse);
+
+		System.out.println("Course is :"+tempCourse);
+		System.out.println("Review is :"+tempCourse.getReviews());
+		System.out.println("Done!!!!!!");
+
 	}
 
 	private void findCourseIns(AppDao appDao) {
@@ -52,13 +73,13 @@ public class MappingApplication {
 	}
 
 	private void createCourseByIns(AppDao appDao) {
-		Instructor tempInstructor=new Instructor("Test07","Tester","test07@gmail.com");
-		InstructorDetails tempInstructorDetails=new InstructorDetails("test07@youtube.com","Plaaying");
+		Instructor tempInstructor=new Instructor("Test08","Tester","test08@gmail.com");
+		InstructorDetails tempInstructorDetails=new InstructorDetails("test08@youtube.com","Plaaying");
 		tempInstructor.setInstructorDetails(tempInstructorDetails);
 		//appDao.createInstructor(tempInstructor);
-		Course tempCourse1=new Course("CSE-105");
-		Course tempCourse2=new Course("EEE-105");
-		Course tempCourse3=new Course("IPE-105 ");
+		Course tempCourse1=new Course("CSE-106");
+		Course tempCourse2=new Course("EEE-106");
+		Course tempCourse3=new Course("IPE-106 ");
 
 		tempInstructor.add(tempCourse1);
 		tempInstructor.add(tempCourse2);

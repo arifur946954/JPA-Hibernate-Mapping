@@ -3,6 +3,7 @@ package com.maping.Mapping.dao;
 import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
+import com.maping.Mapping.entity.Review;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public interface AppDao {
     List<Course> findCourseWithIns(int theId);
     Course findCourseById(int theId);
     Instructor findInstructorWithCourse(int theId);
+    void saveReviewWithCourse(Course theCourse);
 
 
 }

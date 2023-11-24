@@ -2,6 +2,9 @@ package com.maping.Mapping.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "course")
 
@@ -15,6 +18,8 @@ public class Course {
     @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
+    @OneToMany(mappedBy = "course",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Review> reviews;
 
     public Course() {
     }
@@ -55,5 +60,21 @@ public class Course {
                 ", title='" + title + '\'' +
                 ", instructor=" + instructor +
                 '}';
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void add(Review tempReview){
+        if (reviews==null){
+            reviews=new ArrayList<>();
+        }
+          reviews.add(tempReview);
+        tempReview.setCourse(this);
     }
 }

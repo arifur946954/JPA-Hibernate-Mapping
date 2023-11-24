@@ -3,6 +3,7 @@ package com.maping.Mapping.dao;
 import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
+import com.maping.Mapping.entity.Review;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,13 @@ public class AppDaoImp implements AppDao{
 
 
         return instructor;
+    }
+
+    @Override
+    @Transactional
+    public void saveReviewWithCourse(Course theCourse) {
+        entityManager.persist(theCourse);
+
     }
 
 
