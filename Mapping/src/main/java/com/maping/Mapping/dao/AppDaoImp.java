@@ -4,9 +4,12 @@ import com.maping.Mapping.entity.Course;
 import com.maping.Mapping.entity.Instructor;
 import com.maping.Mapping.entity.InstructorDetails;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 public class AppDaoImp implements AppDao{
@@ -47,6 +50,43 @@ public class AppDaoImp implements AppDao{
     }
 
 
+
+    @Override
+    public Course findCourseById(int theId) {
+      Course tempCourse=  entityManager.find(Course.class,theId);
+        return tempCourse;
+
+    }
+
+
+    @Override
+    public List<Course> findCourseWithIns(int theId) {
+        TypedQuery<Course> query=entityManager.createQuery(
+                "from Course where instructor.id=:data", Course.class);
+        query.setParameter("data",theId);
+        List<Course> courses=query.getResultList();
+        return courses;
+
+
+    }
+
+    @Override
+    public Instructor findInstructorWithCourse(int theId) {
+        TypedQuery<Instructor> query=entityManager.createQuery(
+                """
+                        
+                select i from Instructor i 
+                JOIN FETCH i.course
+                where i.id=:data
+        
+                """ , Instructor.class);
+        query.setParameter("data",theId);
+        Instructor instructor=query.getSingleResult();
+
+
+
+        return instructor;
+    }
 
 
 }

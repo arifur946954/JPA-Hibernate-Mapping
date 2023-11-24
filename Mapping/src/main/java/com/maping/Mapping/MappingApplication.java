@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class MappingApplication {
 
@@ -21,20 +23,32 @@ public class MappingApplication {
 		return runner -> {
 
 			//createInstructor(appDao);
-			//findInstructor(appDao);
+			findInstructor(appDao);
 			//deleteInstructor(appDao);
 			//ONE TO ONE BYDIRECTIONAL
 			//createInstructorDetails(appDao);
 
 			//ONE TO MANY UNIDIRECTIONAL
-			createCourseByIns(appDao);
-
-
+			//createCourseByIns(appDao);
+			//finCourseById(appDao);
+			//findCourseIns(appDao);
 
 
 
 
 		};
+	}
+
+	private void findCourseIns(AppDao appDao) {
+		int theId=10;
+		List<Course> cr= appDao.findCourseWithIns(theId);
+		System.out.println("Course is"+cr);
+	}
+
+	private void finCourseById(AppDao appDao) {
+		int theId=10;
+	Course theCourse=	appDao.findCourseById(theId);
+		System.out.println("Course is"+theCourse);
 	}
 
 	private void createCourseByIns(AppDao appDao) {
@@ -85,9 +99,12 @@ public class MappingApplication {
 	}
 
 	private void findInstructor(AppDao appDao) {
-		int theId=7;
+		int theId=4;
 		 Instructor theInstructor= appDao.findInstructor(theId);
 		System.out.println("Instructor is :"+theInstructor);
+		List<Course> crs= appDao.findCourseWithIns(theId);
+		System.out.println("Course is: "+crs);
+
 		System.out.println("Instructor Detials is: "+theInstructor.getInstructorDetails());
 		System.out.println("Done!!!!");
 	}
