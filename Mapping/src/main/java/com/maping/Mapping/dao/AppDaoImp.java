@@ -96,5 +96,21 @@ public class AppDaoImp implements AppDao{
 
     }
 
+    @Override
+    @Transactional
+    public void delteReview(int theId) {
+        Review theReview=entityManager.find(Review.class,theId);
+        entityManager.remove(theReview);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseWithReview(int theId) {
+        Course theCoourse=entityManager.find(Course.class,theId);
+        entityManager.remove(theCoourse);
+
+    }
+
 
 }

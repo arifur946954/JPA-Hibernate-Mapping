@@ -34,7 +34,9 @@ public class MappingApplication {
 			//finCourseById(appDao);
 			//findCourseIns(appDao);
 			//one to many unidirecironal
-			createReviewWithCrs(appDao);
+			//createReviewWithCrs(appDao);
+			removeReview(appDao);
+			//removeCourse(appDao);
 
 
 
@@ -44,11 +46,23 @@ public class MappingApplication {
 		};
 	}
 
+	private void removeCourse(AppDao appDao) {
+		int theId=13;
+		appDao.deleteCourseWithReview(theId);
+		System.out.println("Done!!!!!");
+	}
+
+	private void removeReview(AppDao appDao) {
+		int theId=6;
+		appDao.delteReview(theId);
+		System.out.println("Done!!!!!");
+	}
+
 	private void createReviewWithCrs(AppDao appDao) {
-		Course tempCourse=new Course("CSE-101");
-		Review tempReview1=new Review("Course is Awesome");
-		Review tempReview2=new Review("Course is so bad");
-		Review tempReview3=new Review("Course is Average");
+		Course tempCourse=new Course("CSE-104");
+		Review tempReview1=new Review("Course is just owww");
+		Review tempReview2=new Review("Course is so intermidite");
+		Review tempReview3=new Review("Course is good");
 		  tempCourse.add(tempReview1);
 		tempCourse.add(tempReview2);
 		tempCourse.add(tempReview3);

@@ -18,6 +18,10 @@ public interface AppDao {
     Course findCourseById(int theId);
     Instructor findInstructorWithCourse(int theId);
     void saveReviewWithCourse(Course theCourse);
+    //delete only review
+    void delteReview(int theId);
+    //delte course with review
+    void deleteCourseWithReview(int theId);
 
 
 }
